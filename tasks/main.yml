@@ -13,7 +13,7 @@
 - template: src={{ docker_compose_file }} dest=/etc/docker-compose/{{ docker_app_name }}/docker-compose.yml
   sudo: yes
 
-- template: src=parameters.j2 dest=/etc/sysconfig/docker-{{ docker_app_name }}
+- template: src=parameters.j2 dest=/etc/sysconfig/docker-compose-{{ docker_app_name }}
   sudo: yes
 
 - template: src=docker-compose-permanent.j2 dest="/lib/systemd/system/docker-compose-permanent@.service"
