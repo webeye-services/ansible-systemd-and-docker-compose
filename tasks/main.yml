@@ -7,7 +7,11 @@
 # TODO: make docker-compose install
 #
 
+- file: state=directory path=/etc/docker-compose/{{ docker_app_name }} owner=root group=docker mode=755
+  sudo: yes
 
+- file: state=present src={{ docker_compose_file }} dest=/etc/docker-compose/{{ docker_app_name }}/docker-compose.yml
+  sudo: yes
 
 - template: src=parameters.j2 dest=/etc/sysconfig/docker-{{ docker_app_name }}
   sudo: yes
