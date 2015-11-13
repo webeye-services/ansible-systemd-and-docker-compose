@@ -7,8 +7,11 @@
 # TODO: make docker-compose install
 #
 
-- file: state=directory path=/etc/docker-compose/{{ docker_app_name }} owner=root group=docker mode=755
+- file: state=directory path={{ item }}  owner=root group=docker mode=755
   sudo: yes
+  with_items:
+    - /etc/docker-compose/{{ docker_app_name }}
+    - /var/log/{{ docker_app_name }}
 
 - template: src={{ docker_compose_file }} dest=/etc/docker-compose/{{ docker_app_name }}/docker-compose.yml
   sudo: yes
