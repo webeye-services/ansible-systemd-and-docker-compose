@@ -9,8 +9,8 @@ RestartSec=10
 EnvironmentFile=/etc/sysconfig/docker-compose-%i
 WorkingDirectory=/etc/docker-compose/%i
 ExecStartPre=/usr/bin/docker-compose pull
-ExecStart=/usr/bin/docker-compose up %i
-ExecStop=-/usr/bin/docker-compose stop %i
+ExecStart=/usr/bin/docker-compose up
+ExecStop=-/usr/bin/docker-compose stop
 
 [Install]
 WantedBy=multi-user.target
