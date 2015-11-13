@@ -1,0 +1,14 @@
+[Unit]
+Description=%I
+Requires=docker.service
+After=docker.service
+
+[Service]
+Restart=on-failure
+RestartSec=10
+EnvironmentFile=/etc/sysconfig/docker-compose-%i
+ExecStart=docker-compose run %i
+ExecStop=-docker-compose stop %i
+
+[Install]
+WantedBy=multi-user.target

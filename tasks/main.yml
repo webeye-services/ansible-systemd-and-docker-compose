@@ -1,0 +1,22 @@
+---
+#
+# generate ans exec docker image via docker compose
+#
+# support only systemD
+#
+# TODO: make docker-compose install
+#
+
+
+
+- template: src=parameters.j2 dest=/etc/sysconfig/docker-{{ docker_app_name }}
+  sudo: yes
+
+- template: src=docker-permanent.j2 dest="/lib/systemd/system/docker-permanent@.service"
+  sudo: yes
+
+- file: src="/lib/systemd/system/docker-permanent@.service" dest="/lib/systemd/system/docker-permanent@{{ docker_app_name }}.service"  state=link force=yes
+  sudo: yes
+
+- service: name="docker-permanent@{{ docker_app_name }}.service" enabled=yes state=restarted
+
