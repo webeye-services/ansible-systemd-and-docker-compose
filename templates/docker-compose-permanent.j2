@@ -8,7 +8,8 @@ Restart=on-failure
 RestartSec=10
 EnvironmentFile=/etc/sysconfig/docker-compose-%i
 WorkingDirectory=/etc/docker-compose/%i
-ExecStart=/usr/bin/docker-compose run %i
+ExecPre=/usr/bin/docker-compose pull
+ExecStart=/usr/bin/docker-compose run %i -d
 ExecStop=-/usr/bin/docker-compose stop %i
 
 [Install]
