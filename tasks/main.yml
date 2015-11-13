@@ -11,7 +11,6 @@
   sudo: yes
   with_items:
     - /etc/docker-compose/{{ docker_app_name }}
-    - /var/log/{{ docker_app_name }}
 
 - template: src={{ docker_compose_file }} dest=/etc/docker-compose/{{ docker_app_name }}/docker-compose.yml
   sudo: yes
