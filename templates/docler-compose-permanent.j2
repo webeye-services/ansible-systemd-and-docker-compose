@@ -7,6 +7,7 @@ After=docker.service
 Restart=on-failure
 RestartSec=10
 EnvironmentFile=/etc/sysconfig/docker-compose-%i
+WorkingDirectory=/etc/docker-compose/%i
 ExecStart=docker-compose run %i
 ExecStop=-docker-compose stop %i
 
