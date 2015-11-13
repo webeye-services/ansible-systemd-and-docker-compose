@@ -12,11 +12,11 @@
 - template: src=parameters.j2 dest=/etc/sysconfig/docker-{{ docker_app_name }}
   sudo: yes
 
-- template: src=docker-permanent.j2 dest="/lib/systemd/system/docker-permanent@.service"
+- template: src=docker-compose-permanent.j2 dest="/lib/systemd/system/docker-compose-permanent@.service"
   sudo: yes
 
-- file: src="/lib/systemd/system/docker-permanent@.service" dest="/lib/systemd/system/docker-permanent@{{ docker_app_name }}.service"  state=link force=yes
+- file: src="/lib/systemd/system/docker-compose-permanent@.service" dest="/lib/systemd/system/docker-comopose-permanent@{{ docker_app_name }}.service"  state=link force=yes
   sudo: yes
 
-- service: name="docker-permanent@{{ docker_app_name }}.service" enabled=yes state=restarted
+- service: name="docker-compose-permanent@{{ docker_app_name }}.service" enabled=yes state=restarted
 
