@@ -4,7 +4,6 @@
 #
 # support only systemD
 #
-# TODO: make docker-compose install
 #
 
 - file: state=directory path={{ item }}  owner=root group=docker mode=755
