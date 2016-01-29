@@ -31,4 +31,4 @@
   sudo: yes
 
 - service: name="docker-compose-permanent@{{ docker_app_name }}.service" enabled=yes state=restarted
-
+  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
